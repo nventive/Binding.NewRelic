@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>monoandroid7.0</TargetFramework>
+		<TargetFramework>monoandroid70</TargetFramework>
 		<TargetFrameworkIdentifier>MonoAndroid</TargetFrameworkIdentifier>
 		<TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
 		<RootNamespace>Binding.NewRelic.Android</RootNamespace>
