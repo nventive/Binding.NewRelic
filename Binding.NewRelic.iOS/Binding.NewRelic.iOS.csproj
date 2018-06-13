@@ -286,5 +286,12 @@
     <Content Include="Native References\NewRelicAgent.framework\Headers\NRTimer.h" />
     <Content Include="Native References\NewRelicAgent.framework\Headers\NRURLSessionTaskDelegateBase.h" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GitVersionTask">
+      <Version>4.0.0-beta0012</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

@@ -5,11 +5,6 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding.NewRelic.iOS", "Binding.NewRelic.iOS\Binding.NewRelic.iOS.csproj", "{C6F189DC-4A85-4BF8-B661-0C12658771D7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{472EF750-CACF-4A34-AD90-7C0F00D842F3}"
-	ProjectSection(SolutionItems) = preProject
-		Build\Build.proj = Build\Build.proj
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A4E6B8B-D9F6-4B07-8610-57578B169F21}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
