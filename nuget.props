@@ -1,0 +1,11 @@
+<Project>
+	<PropertyGroup>
+		<Authors>nventive</Authors>
+		<PackageId>nventive.NewRelic.Xamarin</PackageId>
+		<Title>Xamarin Binding for NewRelic</Title>
+		<PackageProjectUrl>https://github.com/nventive/Binding.NewRelic</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/nventive/Binding.NewRelic/blob/master/License.md</PackageLicenseUrl>
+		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+		<PackageDescription>A Xamarin binding library for NewRelic</PackageDescription>
+	</PropertyGroup>
+</Project>

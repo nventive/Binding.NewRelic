@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Prevents this project from generating a dll-->
+		<OutputType>Module</OutputType>
+		<TargetFrameworks>xamarinios10;monoandroid70</TargetFrameworks>
+		<OutputPath>bin\$(Configuration)</OutputPath>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<!-- Workaround to ensure DLLs from the ProjectReferences are included in the nupkg https://github.com/NuGet/Home/issues/3891 -->
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+
+	<Import Project="../nuget.props" />
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'monoandroid70'">
+		<TargetFrameworkIdentifier>MonoAndroid</TargetFrameworkIdentifier>
+		<TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(TargetFramework)' == 'xamarinios10'">
+		<TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+		<TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'monoandroid70'">
+		<Reference Include="Mono.Android" />
+		<ProjectReference Include="..\Binding.NewRelic.Android\Binding.NewRelic.Android.csproj">
+			<PrivateAssets>All</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'xamarinios10'">
+		<Reference Include="Xamarin.iOS" />
+		<ProjectReference Include="..\Binding.NewRelic.iOS\Binding.NewRelic.iOS.csproj">
+			<PrivateAssets>All</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GitVersionTask" Version="4.0.0-beta0012">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<Import Condition="'$(TargetFramework)' == 'monoandroid70'" Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+	<Import Condition="'$(TargetFramework)' == 'xamarinios10'" Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
+		</ItemGroup>
+	</Target>
+</Project>
